@@ -1,0 +1,53 @@
+div.commentBody h1 {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  margin-top: 5em;
+}
+
+.selfCommentWrapper {
+  margin: 1em auto 2em;
+}
+
+.form {
+  /* border: 1px solid green; */
+  display: grid;
+  align-items: center;
+  grid-template-columns: 4em auto;
+  grid-template-areas:
+    "img input"
+    "img input"
+    ". button";
+}
+.form img {
+  width: 3em;
+  height: 3em;
+  /* padding: 0.2em; */
+  border-radius: 50%;
+  /* background-color: greenyellow; */
+  display: block;
+  grid-area: img;
+}
+.commentBtn {
+  margin: 1em 0;
+  width: 10em;
+  grid-area: button;
+}
+.textarea {
+  width: 100%;
+  grid-area: input;
+}
+.textarea textarea {
+  min-height: unset;
+  height: 4em;
+}
+.textarea.active textarea {
+  min-height: 10em;
+}
+
+.replies {
+  margin-left: 2em;
+  margin-bottom: 2em;
+  margin-top: 0.5em;
+  padding: 0.5em 0 0 1em;
+  border-left: 3px solid #eee;
+}

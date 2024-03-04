@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Space+Grotesk&display=swap");
+
+:root {
+  --color-primary: #596aff;
+  --color-primary-dark: #0014c7;
+  --color-dark: #141c30;
+  --color-gray: #434959;
+  --color-gray-400: rgb(103, 114, 126);
+  --color-gray-light: rgb(100, 100, 100);
+  --color-gray-100: #efefef;
+  --color-background-light: #f0eaff;
+  --color-background: #f8f9ff;
+  --color-cta-text: #6941c6;
+  --color-cta-background: #f9f5ff;
+  --color-cta-background-light: #d6daff;
+  --color-white: #fff;
+  --color-danger: #d61c4e;
+  --color-success: #00c851;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    --secondary-glow: linear-gradient(
+      to bottom right,
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0.3)
+    );
+
+    --tile-start-rgb: 2, 13, 46;
+    --tile-end-rgb: 2, 5, 19;
+    --tile-border: conic-gradient(
+      #ffffff80,
+      #ffffff40,
+      #ffffff30,
+      #ffffff20,
+      #ffffff10,
+      #ffffff10,
+      #ffffff80
+    );
+
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  max-width: 100vw;
+  font-family: "Space Grotesk", sans-serif;
+  overflow-x: hidden;
+  background-color: var(--color-background);
+}
+html {
+  font-size: 0.6rem;
+}
+code {
+  font-family: Consolas, "courier new";
+  color: crimson;
+  background-color: #f1f1f1;
+  padding: 2px;
+  font-size: 105%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+html {
+  max-width: 150em;
+  margin: auto;
+}
+@media (min-width: 300px) {
+  main {
+    padding: 0 2em;
+  }
+}
+@media (min-width: 400px) {
+  html {
+    /* font-size: 1rem; */
+  }
+  main {
+    padding: 0 5em;
+  }
+}
+@media (min-width: 600px) {
+  html {
+    /* font-size: 1.1rem; */
+  }
+}
+@media (min-width: 900px) {
+  html {
+    font-size: 0.65rem;
+  }
+  main {
+    padding: 0 8em;
+  }
+}
+@media (min-width: 1200px) {
+  html {
+    font-size: 0.75rem;
+  }
+}
+@media (min-width: 1500px) {
+  html {
+    font-size: 0.85rem;
+  }
+}

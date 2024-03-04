@@ -1,0 +1,19 @@
+.margin {
+  margin: 12em auto;
+}
+.title{
+    text-align: center;
+    margin-top: 15em;
+    margin-bottom: 2em;
+}
+.form{
+  width: 100%;
+  max-width: 40em;
+  margin: auto;
+  margin-bottom: 12em;
+}
+.resetBtn{
+    width: 100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}

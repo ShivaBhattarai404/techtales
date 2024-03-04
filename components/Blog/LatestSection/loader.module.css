@@ -1,0 +1,65 @@
+.section {
+  gap: 0;
+  margin-top: 2rem;
+}
+.wrapper1,
+.wrapper2,
+.wrapper3 {
+  left: 0;
+  display: grid;
+  row-gap: 1rem;
+  column-gap: 1em;
+  position: relative;
+  justify-content: left;
+  place-items: flex-start;
+  grid-template-areas:
+    "post1 post2"
+    "post1 post3"
+    "post1 post4";
+}
+.wrapper2,
+.wrapper3 {
+  display: none;
+}
+.section h1 {
+  font-size: 2.5rem;
+  grid-area: title;
+  margin-bottom: 1em;
+}
+.post1 {
+  grid-area: post1;
+}
+.post2 {
+  grid-area: post2;
+}
+.post3 {
+  grid-area: post3;
+}
+.post4 {
+  grid-area: post4;
+}
+
+@media (max-width: 900px) {
+  .wrapper2,
+  .wrapper3 {
+    display: grid;
+    grid-template-areas:
+      "post1"
+      "post2"
+      "post3"
+      "post4";
+  }
+  .wrapper1,
+  .wrapper3{
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .wrapper1,
+  .wrapper2 {
+    display: none;
+  }
+  .wrapper3{
+    display: grid;
+  }
+}

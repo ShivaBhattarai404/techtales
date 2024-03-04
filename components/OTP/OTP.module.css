@@ -1,0 +1,59 @@
+.imgWrapper{
+    width: 8em;
+    height: 8em;
+    display: grid;
+    place-content: center;
+    border-radius: 50em;
+    overflow: hidden;
+    border: 5px solid #fff;
+    margin: 0.5em auto;
+}
+.imgWrapper img{
+    transform: translateY(1.2em);
+}
+.title,
+.text,
+.btn{
+    display: block;
+    text-align: center;
+}
+.text{
+    margin: 1em 0;
+}
+.btn{
+    color: var(--color-primary);
+    margin-top: -0.5em;
+}
+.inputWrapper{
+    display: flex;
+    justify-content: center;
+}
+.input{
+    width: 5em;
+    margin: 0 0.5em;
+    user-select: none;
+}
+.input input{
+    padding: 0;
+    color: var(--color-gray);
+    height: unset;
+    font-size: 1.2em;
+    text-align: center;
+}
+.input input::selection{
+    color: inherit;
+    background-color: inherit;
+}
+.btn{
+    display: block;
+    padding: 0;
+    margin: 0 auto;
+}
+.loadingText{
+    text-align: center;
+    font-size: 1em;
+    margin: 1em auto;
+}
+.error{
+    color: var(--color-danger);
+}

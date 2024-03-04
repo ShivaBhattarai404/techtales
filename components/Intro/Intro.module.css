@@ -1,0 +1,56 @@
+.intro {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.introContent {
+  /* max-width: 50em; */
+}
+.introContent h1 {
+  font-size: 3em;
+  font-weight: 700;
+  color: #333;
+}
+.introContent h1 span {
+  color: var(--color-primary);
+}
+.introContent .introDescription {
+  font-size: 1.3em;
+  color: #666;
+  margin-top: 1em;
+}
+.introContent button.introBtn {
+  display: inline-block;
+  width: 10em;
+  height: 3em;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  margin-top: 2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-left: 0;
+}
+.introImage {
+  height: 38em;
+}
+
+@media (max-width: 600px) {
+  .intro {
+    flex-direction: column;
+    padding-top: 2em;
+  }
+  .introContent {
+    text-align: center;
+  }
+  .introContent h1 {
+    font-size: 2.2em;
+  }
+  .introContent button.introBtn {
+    font-size: 1.2em;
+  }
+  .introImage {
+    width: 100%;
+    height: 100%;
+    margin: 3em auto;
+  }
+}

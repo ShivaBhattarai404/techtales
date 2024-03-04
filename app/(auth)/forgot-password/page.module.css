@@ -1,0 +1,29 @@
+.section {
+  padding-top: 3em;
+}
+.emailInput {
+  width: 40em;
+  margin: 0.5em auto 1em;
+}
+button.continueBtn {
+  width: 40em;
+  display: block;
+  margin: 0.5em auto 3em;
+}
+.loader {
+  margin: 1em auto;
+  display: block;
+  font-size: 1.5em;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .emailInput,
+  button.continueBtn {
+    font-size: 1.3em;
+    width: 23em;
+  }
+  .emailInput{
+    font-size: 1.2em;
+    width: 25em;
+  }
+}

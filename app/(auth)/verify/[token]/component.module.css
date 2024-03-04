@@ -1,0 +1,33 @@
+.imgWrapper{
+    width: 8em;
+    height: 8em;
+    text-align: center;
+    margin: 1em auto;
+    border-radius: 50em;
+    overflow: hidden;
+    background-color: var(--color-gray-100);
+    border: 5px solid #fff;
+}
+.imgWrapper img{
+    /* padding: 1em; */
+    transform: translateY(2em);
+}
+.title{
+    text-align: center;
+    margin: 0 auto;
+}
+.description{
+    text-align: center;
+    color: var(--color-gray);
+    margin: 1em auto;
+}
+.cta__btn{
+    width: inherit;
+    display: block;
+    margin: auto;
+}
+@media (max-width: 600px){
+    .description{
+        font-size: 1.1em;
+    }
+}

@@ -1,0 +1,130 @@
+.section {
+  padding: 5em 0;
+  display: grid;
+  position: relative;
+  gap: 0 2em;
+  justify-content: flex-start;
+  grid-template-columns: 35em 50em;
+  grid-template-areas:
+    "title title"
+    "fst second"
+    "fst third"
+    "fst fourth";
+}
+.section > h1 {
+  grid-area: title;
+  margin: 1em;
+  font-size: 2.5em;
+}
+.tags {
+  margin: 1em auto 0.8em;
+}
+.tags button {
+  margin-bottom: 0.5em;
+}
+/* showing paragraph for 1st element only */
+.blogCard:not(:first-of-type) p {
+  display: none;
+}
+
+/* Adjusting height and width of cards */
+.blogCard{
+  font-size: 1em;
+}
+.blogCard:not(:first-of-type) {
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: 0.4s ease;
+}
+.blogCard:not(:first-of-type):hover {
+  transform: translateX(1em);
+}
+.blogCard:not(:first-of-type) .blog_info {
+  /* blog info part div wrapper*/
+  margin-left: 1em;
+  height: 12em;
+}
+
+/* assigning grid area to each card */
+.blogCard:nth-of-type(1) {
+  max-width: 50em;
+  grid-area: fst;
+}
+.blogCard:nth-of-type(2) {
+  grid-area: second;
+}
+.blogCard:nth-of-type(3) {
+  grid-area: third;
+}
+.blogCard:nth-of-type(4) {
+  grid-area: fourth;
+}
+
+.blogCard > img {
+  max-width: 15em;
+  height: 12em;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.blogCard:nth-of-type(1) > img {
+  height: 20em;
+}
+.blogCard:first-of-type img {
+  max-width: unset;
+  width: 100%;
+}
+.blog_info p {
+  margin: 1em auto;
+  font-size: 1.1em;
+}
+
+@media (max-width: 800px) {
+  .section {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "fst"
+      "second"
+      "third"
+      "fourth";
+      padding-right: 8em;
+  }
+  .blogCard:first-of-type {
+    height: 50em;
+    margin-bottom: 2em;
+    padding: 2em;
+  }
+  .blogCard:nth-of-type(1) > img {
+    height: 20em;
+  }
+  .blogCard:not(:first-of-type) img {
+    max-width: unset;
+    width: 20em;
+  }
+}
+@media (max-width: 600px) {
+  .section {
+    padding: 0;
+  }
+  .blogCard.blog0,
+  .blogCard.blog1,
+  .blogCard.blog2,
+  .blogCard.blog3 {
+    margin-bottom: 3em;
+    height: 45em;
+    flex-direction: column;
+    padding: 2em;
+  }
+  .blogCard.blog0 img,
+  .blogCard.blog1 img,
+  .blogCard.blog2 img,
+  .blogCard.blog3 img {
+    width: 100%;
+    height: 25em;
+  }
+  .blogCard:not(:first-of-type) p {
+    display: inline;
+  }
+}

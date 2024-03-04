@@ -1,0 +1,72 @@
+.btn {
+  margin: auto 0.5em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border: none;
+  border-radius: 0.625em;
+  outline: none;
+  background-color: var(--color-primary);
+  -webkit-transition: color 350ms ease, border-color 350ms ease,
+    background-color 350ms ease;
+  transition: all 350ms ease;
+  color: #fff;
+  text-align: center;
+  box-shadow: none;
+  cursor: pointer;
+  font-size: inherit;
+  line-height: 1.55;
+  padding: 0.6em 2em;
+  user-select: none;
+}
+.btn:hover {
+  cursor: pointer;
+}
+.btn:active{
+  scale: 0.9;
+}
+.hover:hover {
+  background-color: #fff;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.text {
+  color: var(--color-primary);
+  background: transparent;
+  border: none;
+}
+
+.outlined {
+  border-color: var(--color-primary);
+  background-color: #fff;
+  color: var(--color-primary);
+}
+.tag {
+  padding: 0.1em 0.8em;
+  font-size: 0.8em;
+  color: var(--color-gray-light);
+  background-color: #f0f0f0;
+  border: none;
+}
+.cta {
+  color: var(--color-cta-text);
+  background-color: var(--color-cta-background);
+}
+
+.disabled,
+.disabled:active,
+.disabled:hover {
+  color: #555;
+  background-color: #ddd;
+  border: none;
+}
+.cancel,
+.cancel:hover {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #222;
+}

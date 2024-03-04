@@ -1,0 +1,189 @@
+.section {
+  display: block;
+}
+.header {
+  text-align: center;
+  padding: 2em 0;
+}
+.header h1 {
+  font-size: 3em;
+  padding: 0.5em 0;
+}
+.header p {
+  font-size: 1.1em;
+  color: var(--color-gray);
+  /* width: 50%; */
+  margin: auto;
+  text-wrap: balance;
+}
+
+.body {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+  flex-wrap: wrap;
+}
+.leftCard {
+  width: 40em;
+  height: 50em;
+  padding: 4em 3em;
+  color: var(--color-white);
+  background-color: transparent;
+  position: relative;
+}
+.leftCard * {
+  position: relative;
+  z-index: 2;
+}
+.leftCard img.bg {
+  width: inherit;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.leftCard h2 {
+  font-size: 2.5em;
+  word-spacing: 2px;
+  letter-spacing: 3px;
+  text-wrap: balance;
+  margin: 1em auto;
+  font-weight: 400;
+}
+.leftCard h2 + p {
+  text-wrap: balance;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-bottom: 2em;
+}
+
+/* ContactCard */
+div.contactCard {
+  margin: 2em 1em;
+  padding: 2em;
+  width: fit-content;
+  background-color: #434959;
+  display: grid;
+  justify-content: start;
+  text-align: left;
+  grid-template-areas:
+    "img title"
+    "img content1"
+    ". content2";
+}
+.contactCard:hover {
+  background-color: #434959;
+  box-shadow: unset;
+  transform: translateX(1em);
+  cursor: text;
+}
+div.contactCard__imageWrapper {
+  grid-area: img;
+  width: 3.75em;
+  height: 3.75em;
+  margin-right: 1em;
+  padding: 0.75em;
+  border-radius: 50%;
+  background-color: rgb(88 95 127);
+}
+.contactCard__imageWrapper img {
+  width: 100%;
+  height: 100%;
+}
+.contactCard span:nth-child(2) {
+  grid-area: title;
+  font-size: 1.1em;
+}
+.contactCard span:nth-child(3) {
+  grid-area: content1;
+}
+.contactCard span:nth-child(4) {
+  grid-area: content2;
+}
+
+/* Form */
+.form {
+  padding-left: 4em;
+  margin-bottom: 2em;
+  width: calc(100% - 40em);
+}
+.form h1 {
+  font-size: 2.5em;
+  margin: 1em 0;
+}
+.form p {
+  color: var(--color-gray);
+  font-size: 1.125em;
+  letter-spacing: -0.03em;
+  margin-bottom: 2em;
+}
+.form .submitBtn {
+  margin-top: 1em;
+}
+.submitBtn svg{
+  margin-right: 0.5em;
+  vertical-align: text-top;
+  font-weight: bold;
+  animation: spin 1s linear infinite;
+}
+
+@media (min-width: 900px) {
+  .header h1 {
+    font-size: 3em;
+    padding: 0;
+  }
+  .header p {
+    width: 80%;
+  }
+  .body {
+    flex-wrap: nowrap;
+  }
+}
+@media (max-width: 450px) {
+  .contactCard {
+    grid-template-areas: "img" "title" "content1" "content2";
+    /* justify-content: center; */
+    text-align: center;
+  }
+  .contactCard__imageWrapper {
+    margin: auto;
+  }
+  .contactCard span {
+    line-height: 1.6em;
+  }
+  .contactCard span:nth-child(2) {
+    margin-bottom: 0.5em;
+  }
+}
+@media (min-width: 900px) and (max-width: 1100px) {
+  .form div {
+    width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .leftCard {
+    height: fit-content;
+    width: 100%;
+  }
+  .form {
+    width: 100%;
+  }
+}
+@media (max-width: 420px) {
+  div.contactCard {
+    width: 100%;
+    margin: 2em auto;
+  }
+}
+
+
+@keyframes spin{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,76 @@
+.section {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  grid-template-areas:
+    "title title"
+    "blog blog"
+    "btn btn";
+  padding: 5em 0;
+}
+.title {
+  font-size: 2.2em;
+  grid-area: title;
+}
+.tagBox {
+  margin: auto;
+  margin-right: 0;
+  grid-area: tagBox;
+}
+.tagBox button:hover {
+  color: #fff;
+  background-color: var(--color-primary);
+}
+.blogWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: blog;
+}
+.blog {
+  margin: 1em 2em;
+  margin-left: 0;
+}
+button.cta__loadMore {
+  margin: auto;
+  margin-top: 2em;
+  grid-area: btn;
+}
+.cta__loadMore * {
+  vertical-align: middle;
+}
+.cta__loadMore svg {
+  margin-left: 0.3em;
+  transition: 0.2s ease-in-out;
+}
+.cta__loadMore:hover svg {
+  margin-left: 0.8em;
+}
+
+@media (max-width: 600px) {
+  .blogWrapper {
+    display: block;
+    margin: auto;
+  }
+  .blogWrapper .blog{
+    width: 100%;
+    padding: 2em;
+  }
+}
+/* @media (max-width: 900px) {
+  .section {
+    grid-template-areas:
+      "title title"
+      "tagBox tagBox"
+      "blog blog"
+      "btn btn";
+  }
+  .tagBox {
+    margin: 1em auto;
+    margin-left: 4em;
+  }
+  .tagBox button {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    padding: 0.4em 2em;
+  }
+}
+*/

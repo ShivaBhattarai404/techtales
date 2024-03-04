@@ -1,0 +1,78 @@
+.user {
+  display: flex;
+  flex-direction: row;
+  height: inherit;
+  align-items: center;
+  padding: 0.5em;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.user:hover {
+  background-color: #ebecfc;
+}
+.user img {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  margin: auto 1em;
+}
+.user h1 {
+  margin: auto 0;
+  font-size: 1.5em;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+}
+
+.user + .dialogbox {
+  position: absolute;
+  display: block;
+  width: 16em;
+  top: 5em;
+  right: 3em;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 0 5px #ccc;
+  padding: 0em;
+  z-index: 1;
+  transition: all 0.2s;
+  transform-origin: 100% 0%;
+  transition: scale 0.2s ease-in-out;
+  scale: 0;
+  transform-origin: top;
+}
+.dialogbox.active {
+  scale: 1;
+}
+.dialogbox li.logoutBtn {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0 0.5em;
+  border-radius: 5px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+.dialogbox li.logoutBtn svg {
+  margin: 0 0.5em;
+}
+.dialogbox li:hover {
+  cursor: pointer;
+  background-color: #ebecfc;
+  color: #4650bb;
+}
+
+@media (max-width: 800px){
+  .user{
+    justify-content: flex-start;
+  }
+  .user + .dialogbox{
+    display: none;
+  }
+  .wrapper{
+    display: inline-block;
+    padding-left: 1em;
+    padding-bottom: 1em;
+  }
+}

@@ -1,0 +1,38 @@
+.section{
+    text-align: center;
+    padding: 5em 0;
+}
+.title{
+    font-size: 2.5em;
+}
+.description{
+    font-size: 1.2em;
+    color: var(--color-gray);
+    width: 80%;
+    max-width: 40em;
+    margin: 1em auto;
+    text-wrap: balance;
+}
+.faq_wrapper{
+    margin: 5em auto;
+    max-width: 50em;
+}
+.moreQs{
+    margin: auto;
+    padding: 3em;
+    max-width: 55%;
+    border-radius: 15px;
+    text-align: center;
+    background-color: var(--color-background-light);
+    font-size: 1.2em;
+}
+.moreQs h1,
+.moreQs p,
+.moreQs button{
+    margin: 1em auto;
+}
+@media (max-width: 800px) {
+    .moreQs{
+        max-width: 90%;
+    }
+}

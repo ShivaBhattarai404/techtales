@@ -1,0 +1,122 @@
+.wrapper {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  overflow: hidden;
+  padding: 24px;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  display: grid;
+  align-items: center;
+  font-size: 0.625em;
+  font-family: inherit;
+  grid-template-columns: 0.5fr 7fr 1fr;
+  grid-template-areas:
+    "like user reply"
+    "like comment comment";
+  position: relative;
+}
+
+.likeIcon {
+  grid-area: like;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-self: flex-start;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+.likeIcon svg {
+  font-size: 1.5em;
+}
+.user {
+  grid-area: user;
+  display: flex;
+  align-items: center;
+}
+.user img {
+  border-radius: 50%;
+  width: 4em;
+  height: 4em;
+  object-fit: cover;
+}
+.user span {
+  font-weight: bold;
+  font-size: 1.7em;
+  margin-left: 1em;
+}
+.time {
+  grid-area: time;
+  margin-left: 2em;
+  font-size: 1.5em;
+  color: var(--color-gray-400);
+  font-weight: 500;
+}
+.replyText {
+  grid-area: reply;
+  color: var(--color-primary-dark);
+  font-size: 1.6em;
+  user-select: none;
+  cursor: pointer;
+}
+.replyText svg {
+  margin-right: 0.5em;
+}
+.comment {
+  grid-area: comment;
+  padding-top: 1em;
+  font-size: 1.7em;
+}
+
+.dots {
+  grid-area: dots;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  cursor: pointer;
+  font-size: 2em;
+  color: var(--color-gray-400);
+}
+.dialogbox {
+  position: absolute;
+  display: block;
+  width: 15em;
+  top: 3em;
+  right: 4em;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 0 5px #ccc;
+  padding: 1em;
+  z-index: 1;
+  transition: all 0.2s;
+  transform-origin: 100% 0%;
+}
+.dialogbox li {
+  list-style: none;
+  font-size: 1.8em;
+  padding: 0.5em;
+  border-radius: 5px;
+  user-select: none;
+}
+.dialogbox li:hover {
+  cursor: pointer;
+  background-color: #ebecfc;
+  color: #4650bb;
+}
+
+
+@media (max-width: 400px){
+  .wrapper{
+    padding: 1em 1.5em 2em;
+    grid-template-columns: 1fr 7fr 1fr;
+  }
+  .user{
+    font-size: 1.2em;
+  }
+  .comment {
+    font-size: 2em;
+  }
+  .likeIcon {
+    font-size: 1.8em;
+  }
+}

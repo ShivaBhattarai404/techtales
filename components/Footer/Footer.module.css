@@ -1,0 +1,120 @@
+.footer {
+  width: 100%;
+  color: #fff;
+  background-color: var(--color-dark);
+  display: grid;
+  grid-template-columns: repeat(1fr, 3);
+  grid-template-areas:
+    "head links links"
+    "foot foot foot";
+  gap: 1em 1em;
+  padding: 5em;
+  position: relative;
+}
+
+.footer__head {
+  grid-area: head;
+}
+.footer__head p {
+  margin: auto 10px;
+  display: block;
+  max-width: 20em;
+}
+
+.footer__links {
+  grid-area: links;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__links div {
+  align-self: flex-start;
+  font-size: 1.2em;
+  line-height: 2.5em;
+  width: 30%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+.footer__links div span {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 1em;
+}
+.footer a {
+  width: max-content;
+  transition: color 0.3s ease;
+  color: #ddd;
+}
+.footer a:hover {
+  color: var(--color-gray-light);
+}
+
+.footer__bottom {
+  grid-area: foot;
+  display: flex;
+  position: relative;
+  border-top: 1px solid #ddd;
+  margin-top: 2em;
+  padding-top: 2em;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.footer__bottom div {
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+}
+.footer__bottom div a {
+  flex-grow: 1.5;
+}
+
+@media (max-width: 1200px) {
+  .footer {
+    padding: 2em;
+    grid-template-areas: "head" "links" "foot";
+  }
+  .footer p {
+    max-width: 50em;
+  }
+}
+@media (max-width: 900px) {
+  .footer__bottom {
+    flex-direction: column;
+  }
+  .footer__bottom div {
+    width: 50%;
+    margin-bottom: 1em;
+  }
+}
+@media (max-width: 600px) {
+  .footer__bottom div {
+    flex-direction: column;
+  }
+  .footer__bottom div a {
+    margin: 0.5em 0;
+  }
+}
+@media (max-width: 400px) {
+  .footer {
+    padding: 2em 1em 3em;
+  }
+  .footer__head img {
+    display: block;
+    width: 13em;
+    height: 6em;
+  }
+  .footer__head p{
+    margin: 0.5em auto;
+  }
+}
+@media (max-width: 300px) {
+  .footer__links {
+    display: block;
+    margin: auto 1em;
+  }
+  .footer__links div {
+    margin-bottom: 2em;
+  }
+}

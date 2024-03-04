@@ -1,0 +1,78 @@
+.container{
+    cursor: pointer;
+}
+.title{
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--color-primary-dark);
+    margin: 1em 0.5em;
+    display: block;
+}
+.filterBox{
+    width: 20em;
+    height: 4em;
+    /* border: 1px solid; */
+    box-shadow: 0 0 5px #aaa;
+    border-radius: 15px;
+    position: relative;
+}
+@media(max-width: 600px){
+    .container {
+        margin-top: 6em;
+    }
+}
+@media (max-width: 400px){
+    .filterBox{
+        width: auto;
+    }
+}
+.filterBox p{
+    text-align: left;
+    font-size: 1.3em;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 1.5em;
+    transform: translateY(-50%);
+}
+.arrow{
+    position: absolute;
+    top: 60%;
+    right: 1.5em;
+    transform-origin: 0% 50%;
+    transition: 0.4s ease;
+    transform: translateY(-50%) rotate(270deg);
+}
+.arrow.click{
+    top: 40%;
+    transform: translateY(-50%) rotate(90deg);
+}
+.options{
+    width: 100%;
+    height: fit-content;
+    border-radius: 15px;
+    box-shadow: 0 1px 2px #aaa;
+    position: absolute;
+    top: 5em;
+    z-index: 1;
+    transition: 0.2s ease-in-out;
+    background-color: var(--color-white);
+    overflow: hidden;
+}
+.options.click{
+    top: 4em;
+    height: 0em;
+}
+.options ul{
+    width: 100%;
+    height: 100%;
+    list-style: none;
+}
+.options ul li{
+    padding-left: 1em;
+    font-size: 1.3em;
+    line-height: 2.5em;
+}
+.options ul li:hover{
+    background-color: #ddd;
+}

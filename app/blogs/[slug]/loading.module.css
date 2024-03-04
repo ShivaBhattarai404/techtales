@@ -1,0 +1,38 @@
+.section{
+    width: 100%;
+    text-align: center;
+    padding: 5em 0;
+}
+.section *{
+    overflow: hidden;
+}
+.title{
+    margin: 0 auto 1em;
+}
+.author{
+    width: 20em;
+    display: grid;
+    grid-template-columns: 5em 15em;
+    grid-template-rows: auto auto;
+    grid-template-areas: "img name" "img date";
+    margin: 5em 0 8em;
+}
+.authorName{
+    grid-area: name;
+}
+.authorImage{
+    grid-area: img;
+}
+.publishDate{
+    grid-area: date;
+}
+.content{
+    text-align: left;
+}
+.content h1{
+    text-align: left;
+    margin-bottom: 1em;
+}
+.contentImage{
+    margin: 3em auto;
+}

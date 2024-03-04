@@ -1,0 +1,67 @@
+.blog{
+    width: 23em;
+    font-size: 1em;
+}
+.blogImageWrapper{
+    border-radius: 15px;
+    overflow: hidden;
+    width: 100%;
+    height: 12rem;
+}
+.blogImageWrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.tagBox{
+    font-size: 1em;
+    margin: 1em 0;
+}
+.title{
+    text-wrap: balance;
+    font-size: 1.5em;
+}
+.description{
+    display: block;
+    overflow: hidden;
+    margin: 0.5em 0;
+    height: 4.5em;
+    line-height: 1.5em;
+    font-size: 1em;
+    text-wrap: balance;
+}
+.userBox{
+    /* border: 1px solid; */
+    margin-top: 1.5em;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: repeat(1fr, 2);
+    grid-template-areas: "photo userName" "photo date";
+    width: 100%;
+}
+.userBox img{
+    grid-area: photo;
+    width: 3em;
+    height: 3em;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px #aaa;
+}
+.userBox__userName{
+    color: var(--color-gray);
+    font-weight: bold;
+    grid-area: userName;
+}
+.userBox__postingDate{
+    color: var(--color-gray-light);
+    grid-area: date;
+}
+
+@media (max-width: 600px){
+    .blogImageWrapper{
+        border-radius: 15px;
+        overflow: hidden;
+        width: 100%;
+        height: 20em;
+    }
+}

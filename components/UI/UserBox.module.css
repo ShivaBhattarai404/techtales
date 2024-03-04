@@ -1,0 +1,25 @@
+.userBox{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: repeat(1fr, 2);
+    grid-template-areas: "photo userName" "photo date";
+    font-size: 1.1em;
+}
+.userBox__avatar{
+    grid-area: photo;
+    width: 3em;
+    height: 3em;
+    margin-right: 2em;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px #aaa;
+}
+.userBox__userName{
+    grid-area: userName;
+    color: var(--color-gray);
+    font-weight: bold;
+}
+.userBox__postingDate{
+    color: var(--color-gray-light);
+    grid-area: date;
+}
