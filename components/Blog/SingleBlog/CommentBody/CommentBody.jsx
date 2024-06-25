@@ -141,7 +141,7 @@ function CommentBody({
             addCommentLike={addCommentLike}
             deleteComment={commentDeleteHandler}
           />
-          {comment.replies.map((reply, index) => (
+          {/* {comment.replies.map((reply, index) => (
             <div className={classes.replies} key={index}>
               <Comment
                 _id={reply._id}
@@ -153,7 +153,7 @@ function CommentBody({
                 deleteComment={commentDeleteHandler}
               />
             </div>
-          ))}
+          ))} */}
         </Fragment>
       ))}
       {loading && (

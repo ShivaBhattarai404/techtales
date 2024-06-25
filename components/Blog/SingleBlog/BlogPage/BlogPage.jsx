@@ -10,8 +10,6 @@ import classes from "./BlogPage.module.css";
 import UserBox from "../../../UI/UserBox";
 import LikeAndCommentBox from "../LikeAndCommentBox/LikeAndCommentBox";
 import CommentBody from "../CommentBody/CommentBody";
-import CommentProvider from "../store/CommentProvider";
-
 
 const BlogPage = (props) => {
   const {
@@ -68,7 +66,11 @@ const BlogPage = (props) => {
               },
               a(props) {
                 return (
-                  <Link href={props.href} className={classes.link} target="_blank" >
+                  <Link
+                    href={props.href}
+                    className={classes.link}
+                    target="_blank"
+                  >
                     {props.children}
                   </Link>
                 );
@@ -85,18 +87,16 @@ const BlogPage = (props) => {
             addToFavorite={addToFavorite.bind(null, _id)}
           />
         </div>
-        <CommentProvider>
-          <CommentBody
-            user={user}
-            blogId={_id}
-            comments={comments}
-            addComment={addComment}
-            setCommentCount={setCommentCount}
-            addReply={addReply}
-            deleteComment={deleteComment}
-            addCommentLike={addCommentLike}
-          />
-        </CommentProvider>
+        <CommentBody
+          user={user}
+          blogId={_id}
+          comments={comments}
+          addComment={addComment}
+          setCommentCount={setCommentCount}
+          addReply={addReply}
+          deleteComment={deleteComment}
+          addCommentLike={addCommentLike}
+        />
       </section>
     </Fragment>
   );

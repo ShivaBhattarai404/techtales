@@ -20,57 +20,86 @@ export async function generateMetadata({ params }) {
 }
 
 // populate the user details for the commenter and the reply commenter
-async function populateUser(userId) {
-  const [Users, connection] = await getCollection("Users");
-  const user = await Users.findOne({ _id: userId });
-  connection.close();
+async function populateUser(userId, db) {
+  let user = null;
+  if (db) {
+    const userDoc = db.collection("Users");
+    user = await userDoc.findOne({ _id: userId });
+  } else {
+    const [userDoc, connection] = await getCollection("Users");
+    user = await userDoc.findOne({ _id: userId });
+    connection.close();
+  }
   if (!user) throw "User not found.";
   const { _id, name, username, image, avatar } = user;
   return { _id: _id.toString(), name, username, image, avatar };
 }
 
 // populate the comments array with the user details of the commenter and the reply commenter
-async function populateComments(commentsArray) {
-  // if (!commentsArray || commentsArray.length === 0) return [];
-  return [];
-  const [Comments, connection] = await getCollection("Comments");
+async function populateComments(commentsArray, db) {
+  if (!commentsArray || commentsArray.length === 0) return [];
+
+  const commentsDoc = await db.collection("Comments");
 
   // get all comments from the comments array in the blog document and populate the commenter field
-  const comments = await Comments.find({
-    _id: { $in: commentsArray },
-  }).toArray();
+  const comments = await commentsDoc
+    .find({
+      _id: { $in: commentsArray },
+    })
+    .toArray();
 
   // get the user details for each commenter
   const populatedComments = await Promise.all(
     // get the user details for each commenter
     comments.map(async (comment) => {
-      comment._id = comment._id.toString();
-      comment.blogId = comment.blogId.toString();
-      comment.likes = deepCopy(comment.likes);
+      comment._id = String(comment._id);
+      comment.blogId = String(comment.blogId);
+      comment.likes = comment.likes.map((id) => String(id));
 
       // get the user details for the commenter
-      const commenter = await populateUser(comment.commenter);
+      const commenter = await populateUser(comment.commenter, db);
 
       // get the user details for each reply commenter
-      comment.replies = await Promise.all(
-        comment.replies.map(async (reply) => {
-          const commenter = await populateUser(reply.commenter);
-          return { ...reply, commenter };
-        })
-      );
+      // comment.replies = await Promise.all(
+      //   comment.replies.map(async (reply) => {
+      //     const commenter = populateUser(reply.commenter, db);
+      //     return { ...reply, commenter };
+      //   })
+      // );
       return { ...comment, commenter };
     })
   );
-  connection.close();
+  
+  // return [
+  //   {
+  //     _id: "667a9e4695dd0c1856d4ceee",
+  //     user: { _id: "" },
+  //     likes: [],
+  //     commenter: {
+  //       _id: "667a948988a00a3dcc95d940",
+  //       name: "Aryan",
+  //       avatar: "/images/avatar/avatar2.png",
+  //     },
+  //     commentedAt: new Date().toISOString(),
+  //     comment: "This seems like a great blog!",
+  //     blogId: "",
+  //   },
+  // ];
   return populatedComments;
 }
 
 // fetch the blog details from the database
-async function fetchBlog(slug) {
+async function fetchBlog(slug, db) {
   "use server";
-  const [Blogs, connection] = await getCollection("Blogs");
-  const blog = await Blogs.findOne({ slug });
-  connection.close();
+  let blog = null;
+  if (db) {
+    const blogsDoc = db.collection("Blogs");
+    blog = await blogsDoc.findOne({ slug });
+  } else {
+    const [Blogs, connection] = await getCollection("Blogs");
+    blog = await Blogs.findOne({ slug });
+    connection.close();
+  }
   return blog;
 }
 
@@ -102,6 +131,7 @@ async function addComment(blogId, comment) {
     connection.close();
 
     newComment._id = insertedComment.insertedId.toString();
+    newComment.blogId = String(blogId);
     newComment.commenter = await populateUser(newComment.commenter);
 
     return {
@@ -114,8 +144,6 @@ async function addComment(blogId, comment) {
       inserted: false,
       message: error.message || "Something went wrong",
     };
-  } finally {
-    revalidatePath(`/blogs/favorites`);
   }
 }
 
@@ -154,8 +182,6 @@ async function deleteComment(commentId, blogId) {
     };
   } catch (error) {
     return { deleted: false, message: error.message || "Something went wrong" };
-  } finally {
-    revalidatePath(`/blogs/favorites`);
   }
 }
 
@@ -401,19 +427,24 @@ const isBlogLiked = async (blogId) => {
 
 const Blog = async ({ params }) => {
   const token = cookies().get("token")?.value;
+  // console.time("fetch");
   const user = await verifyJwtToken(token);
 
+  const [db, connection] = await getDB();
+
   const slug = params.slug;
-  const blog = await fetchBlog(slug);
+  const blog = await fetchBlog(slug, db);
   if (!blog) {
     return notFound();
   }
-  const writer = await populateUser(blog.writer);
-  const comments = await populateComments(blog.comments);
+  const writer = await populateUser(blog.writer, db);
+  const comments = await populateComments(blog.comments, db);
+
+  connection.close();
+  // console.timeEnd("fetch");
 
   return (
     <Fragment>
-      <img src={blog.thumbnail} alt={blog.title} style={{ width: "0em", height: "0em", position: "fixed" }} />
       <BlogPage
         _id={blog._id.toString()}
         slug={slug}
