@@ -15,13 +15,13 @@ export function CommentInput({ onSave, user }) {
   const formSubmitHandler = (event) => {
     event.preventDefault();
     const comment = event.target.comment.value;
-    onSave(comment);
+    onSave(comment, user);
     event.target.comment.value = "";
   };
   return (
     <div className={classes.selfCommentWrapper} onSubmit={formSubmitHandler}>
       <form className={classes.form}>
-        <img src={user.avatar || "/images/profileImage.jpg"} alt="shark" />
+        <img src={user?.avatar || "/images/Default_Avatar.png"} alt="shark" />
         <Input
           type="textarea"
           title="Your Comment"
@@ -74,7 +74,8 @@ function CommentBody({
   }, [alert]);
 
   // add comment handler
-  const commentAddHandler = async (comment) => {
+  const commentAddHandler = async (comment, user) => {
+    if(!user) return setError("You need to login to comment.");
     if (comment.length === 0) return setError("Comment cannot be empty.");
     setError("");
     setLoading(true);
@@ -126,7 +127,8 @@ function CommentBody({
 
       <h1>Comments ({comments.length})</h1>
 
-      {user && <CommentInput onSave={commentAddHandler} user={user} />}
+      <CommentInput onSave={commentAddHandler} user={user} />
+      {/* {user && <CommentInput onSave={commentAddHandler} user={user} />} */}
 
       {!loading && comments.map((comment) => (
         <Fragment key={comment._id}>
