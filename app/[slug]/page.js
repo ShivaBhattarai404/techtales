@@ -1,14 +1,14 @@
-import { notFound } from "next/navigation";
-import { cookies } from "next/headers";
+import { Fragment } from "react";
 import { ObjectId } from "mongodb";
+import { cookies } from "next/headers";
+import { notFound } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 import { deepCopy } from "@/app/page";
 import { verifyJwtToken } from "@/utils/jwt";
 import { getCollection, getDB } from "@/utils/database";
 
 import BlogPage from "@/components/Blog/SingleBlog/BlogPage/BlogPage";
-import { revalidatePath } from "next/cache";
-import { Fragment } from "react";
 
 export async function generateMetadata({ params }) {
   const [Blogs, connection] = await getCollection("Blogs");
@@ -100,6 +100,7 @@ async function fetchBlog(slug, db) {
     blog = await Blogs.findOne({ slug });
     connection.close();
   }
+  if(!blog) throw notFound();
   return blog;
 }
 

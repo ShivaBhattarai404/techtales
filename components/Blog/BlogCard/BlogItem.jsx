@@ -15,7 +15,7 @@ const BlogItem = (props) => {
 
   return (
     <Card className={`${classes.blog} ${props.className}`} animation={true} style={{...props.style}}  >
-      <Link href={`/blogs/${slug}`}>
+      <Link href={`/${slug}`}>
         <div className={classes.blogImageWrapper}>
           <Image src={thumbnail} width={500} height={500} alt="Blog" />
         </div>

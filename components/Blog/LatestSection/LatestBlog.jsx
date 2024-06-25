@@ -13,7 +13,7 @@ const LatestBlog = ({ blogs }) => {
         <Card
           key={index}
           className={`${classes.blogCard} ${classes[`blog${index}`]}`}
-          href={`/blogs/${slug}`}
+          href={`/${slug}`}
           animation={true}
         >
           <Image src={thumbnail} alt={title} width={400} height={400} />

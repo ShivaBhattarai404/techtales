@@ -19,10 +19,8 @@ export function deepCopy(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 // function to fetch all blogs from the database
-export async function fetchAllBlogs(limit = 0) {
+export async function fetchAllBlogs(limit = 0, db) {
   "use server";
-  const [db, connection] = await getDB();
-  // const [Blogs, connection] = await getCollection("Blogs");
   const BlogsDoc = db.collection("Blogs");
   const UserDoc = db.collection("Users");
   const blogs = await BlogsDoc.find().limit(limit).toArray();
@@ -32,16 +30,21 @@ export async function fetchAllBlogs(limit = 0) {
       blog.writer = user;
     })
   );
-  connection.close();
 
   return deepCopy(blogs);
 }
 // function to fetch featured blogs from the database
-async function fetchFeaturedBlogs() {
+async function fetchFeaturedBlogs(db) {
   "use server";
-  const [Blogs, connection] = await getCollection("Blogs");
-  const blogs = await Blogs.find({ featured: true }).limit(4).toArray();
-  connection.close();
+  let blogs = [];
+  if(db){
+    const BlogsDoc = db.collection("Blogs");
+    blogs = await BlogsDoc.find({ featured: true }).limit(4).toArray();
+  }else {
+    const [Blogs, connection] = await getCollection("Blogs");
+    blogs = await Blogs.find({ featured: true }).limit(4).toArray();
+    connection.close();
+  }
   return blogs;
 }
 
@@ -60,9 +63,12 @@ const getLoggedInUser = async () => {
 // Home component
 export default async function Home() {
   const blogLimit = 8;
-  const blogs = await fetchAllBlogs(blogLimit);
-  const featuredBlogs = await fetchFeaturedBlogs();
+
+  const [db, connection] = await getDB();
+  const blogs = await fetchAllBlogs(blogLimit, db);
+  const featuredBlogs = await fetchFeaturedBlogs(db);
   const user = await getLoggedInUser();
+  connection.close();
 
   return (
     <Fragment>
